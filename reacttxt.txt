@@ -1,0 +1,44 @@
+const myName = 'pat';
+let yourName = 'jo';
+
+yourName = 'sam'; // assigns
+myName = 'jan';   // error
+
+
+The spread operator allows an expression to be expanded in places where multiple arguments (for function calls) or multiple elements (for array literals) or multiple variables (for destructuring assignment) are expected.
+
+For Arrays:
+const fruits = ['apple', 'banana'];
+const veggies = ['cucumber', 'potato'];
+
+const food = ['grapes', ...fruits, ...veggies];
+// -> ["grapes", "apple", "banana", "cucumber", "potato"]
+
+const [fav, ...others] = food;
+console.log(fav); // -> "grapes"
+console.log(others); // -> ["apple", "banana", "cucumber", "potato"]
+For Objects:
+const member = {
+  name: 'Ben',
+  title: 'software developer',
+  skills: ['javascrip:t', 'react', 'redux'],
+};
+
+const memberWithMetadata = {
+  ...member,
+  previousProjects: ['BlueSky', 'RedOcean'];
+};
+
+// behind the scenes:
+const memberWithMetadata = Object.assign(member, {previousProjects: ['BlueSky', 'RedOcean']});
+
+console.log(memberWithMetadata.name); // -> "Ben"
+console.log(Object.keys(memberWithMetadata)); // -> ["apple", "banana", "cucumber", "potato"]
+For function calls:
+const food = ['grapes', 'apple', 'banana', 'cucumber', 'potato'];
+function eat() {
+  console.log(...arguments);
+}
+
+eat(...food)
+// -> grapes apple banana cucumber potato
